@@ -7,18 +7,36 @@ public class GameController : MonoBehaviour
     public UnityEngine.UI.Text Message;
     public UnityEngine.UI.Button StartButton;
     public UnityEngine.UI.Button BackButton;
+    public GameObject StartScreen;
+    public GameObject PlayScreen;
+    private WordGuesser.WordGame guessingGame;
+    public UnityEngine.UI.InputField PlayerGuess;
 
     public void StartGame()
     {
-        this.Message.text = "Can you save the Snowman?";
-        this.StartButton.gameObject.SetActive(false);
-        this.BackButton.gameObject.SetActive(true);
-        OpenStartScreen();
+        this.guessingGame = new WordGuesser.WordGame("apple", 5);
+        this.StartScreen.SetActive (false);
+        this.PlayScreen.SetActive (true);
 
+        Debug.Log(this.guessingGame.GetWord());
+        Debug.Log(this.guessingGame.GetFullWord());
     }
-    public void Start();
+
+    public void OpenStartScreen()
     {
-        this.StartButton.gameObject.SetActive(true);
-        this.BackButton.gameObject.SetActive(false);
+        this.StartScreen.SetActive (true);
+        this.PlayScreen.SetActive (false);
+    }
+
+    public void Start()
+    {
+        this.StartScreen.gameObject.SetActive(true);
+        this.PlayScreen.gameObject.SetActive(false);
+    }
+    
+    public void SubmitGuess()
+    {
+        Debug.Log(this.guessingGame.CheckGuess(PlayerGuess.text));
+        PlayerGuess.text = string.Empty;
     }
 }
