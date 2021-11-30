@@ -14,6 +14,8 @@ public class GameController : MonoBehaviour
     public UnityEngine.UI.Text GetGuess;
     public UnityEngine.UI.Text GetGuessLetters;
     public UnityEngine.UI.Text GetGuessesLeft;
+    public UnityEngine.UI.Text GuessInfo;
+    public UnityEngine.UI.Text CorrectGuess;
 
 
     public void StartGame()
@@ -41,20 +43,14 @@ public class GameController : MonoBehaviour
     public void SubmitGuess()
     {
         Debug.Log(this.guessingGame.CheckGuess(PlayerGuess.text));
+        GetGuessLetters.text = this.guessingGame.GetGuessedLetters();
+        GetGuessesLeft.text = $"{this.guessingGame.GetGuessLimit()- this.guessingGame.GetIncorrectGuesses()}";
+        GetGuess.text = this.guessingGame.GetWord();
+        GuessInfo.text = this.guessingGame.CheckGuess(PlayerGuess.text);
         PlayerGuess.text = string.Empty;
     }
-
-    public void GetWord()
+    public void CorrectGuesses()
     {
-        GetGuess.text = this.guessingGame.GetWord();
-    }
-    
-    public void GetGuessLetters()
-    {
-        GetGuessLetters.text = this.guessingGame.GetGuessedLetters();
-    }
-    public void GetGuessesLeft()
-    {
-        GetGuessesLeft.text = this.guessingGame.GetGuessesLeft();
+        CorrectGuess.text = this.guessingGame.GetFullWord();
     }
 }
