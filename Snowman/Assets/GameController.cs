@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     public Text GetGuessesLeft;
     public Text GuessInfo;
     public Text CorrectGuess;
+    public Text EndText;
+    public GameObject EndScreen;
 
 
     public void StartGame()
@@ -39,6 +41,7 @@ public class GameController : MonoBehaviour
     {
         this.StartScreen.gameObject.SetActive(true);
         this.PlayScreen.gameObject.SetActive(false);
+        this.EndScreen.gameObject.SetActive(false);
     }
     
     public void SubmitGuess()
@@ -53,5 +56,12 @@ public class GameController : MonoBehaviour
     public void CorrectGuesses()
     {
         CorrectGuess.text = this.guessingGame.GetFullWord();
+    }
+
+    public void OpenEndScreen()
+    {
+        StartScreen.SetActive(false);
+        EndScreen.SetActive(true);
+        EndText.text = CorrectWord;
     }
 }
