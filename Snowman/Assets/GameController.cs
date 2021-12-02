@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public UnityEngine.UI.Text Message;
-    public UnityEngine.UI.Button StartButton;
-    public UnityEngine.UI.Button BackButton;
+    public Text Message;
+    public Button StartButton;
+    public Button BackButton;
     public GameObject StartScreen;
     public GameObject PlayScreen;
     private WordGuesser.WordGame guessingGame;
-    public UnityEngine.UI.InputField PlayerGuess;
-    public UnityEngine.UI.Text GetGuess;
-    public UnityEngine.UI.Text GetGuessLetters;
-    public UnityEngine.UI.Text GetGuessesLeft;
-    public UnityEngine.UI.Text GuessInfo;
-    public UnityEngine.UI.Text CorrectGuess;
+    public InputField PlayerGuess;
+    public Text GetGuess;
+    public Text GetGuessLetters;
+    public Text GetGuessesLeft;
+    public Text GuessInfo;
+    public Text CorrectGuess;
 
 
     public void StartGame()
