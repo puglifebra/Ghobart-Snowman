@@ -19,16 +19,20 @@ public class GameController : MonoBehaviour
     public Text CorrectGuess;
     public Text EndText;
     public GameObject EndScreen;
+    
 
 
     public void StartGame()
     {
-        this.guessingGame = new WordGuesser.WordGame("apple", 5);
         this.StartScreen.SetActive (false);
         this.PlayScreen.SetActive (true);
 
         Debug.Log(this.guessingGame.GetWord());
         Debug.Log(this.guessingGame.GetFullWord());
+        WordGuesser.WordSelector selector = WordGuesser.WordSelector.LoadFromString("apple banana grape");
+                this.guessingGame = new WordGuesser.WordGame(selector.GetWord(), 5);
+
+
     }
 
     public void OpenStartScreen()
@@ -52,6 +56,7 @@ public class GameController : MonoBehaviour
         GetGuess.text = this.guessingGame.GetWord();
         GuessInfo.text = this.guessingGame.CheckGuess(PlayerGuess.text);
         PlayerGuess.text = string.Empty;
+        
     }
     public void CorrectGuesses()
     {
@@ -62,6 +67,10 @@ public class GameController : MonoBehaviour
     {
         StartScreen.SetActive(false);
         EndScreen.SetActive(true);
-        EndText.text = CorrectWord;
     }
+
+    // WordGuesser.WordSelector mySelector = WordGuesser.WordSelector.LoadFromString("apple banana grape");
+    // string randomWord = mySelector.GetWord();
+
+
 }
